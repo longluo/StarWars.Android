@@ -6,10 +6,11 @@ import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.yalantis.starwarsdemo.R;
 import com.yalantis.starwarsdemo.interfaces.DemoActivityInterface;
@@ -19,7 +20,7 @@ import com.yalantis.starwarsdemo.particlesys.ParticleSystemRenderer;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
  */
 public class DemoActivity extends AppCompatActivity implements GreetingFragmentInterface,
         DemoActivityInterface, TilesRendererInterface {
-    @Bind(R.id.gl_surface_view)
+    @BindView(R.id.gl_surface_view)
     GLSurfaceView mGlSurfaceView;
 
     private SideFragment mDarkFragment;
@@ -101,7 +102,6 @@ public class DemoActivity extends AppCompatActivity implements GreetingFragmentI
     @Override
     public void goToSide(int cx, int cy, boolean appBarExpanded, String side) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
 
         mDarkFragment = DarkSideFragment.newInstance(cx, cy, appBarExpanded);
         Fragment fragment;

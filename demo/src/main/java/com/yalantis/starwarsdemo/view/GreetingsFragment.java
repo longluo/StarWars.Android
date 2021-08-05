@@ -1,17 +1,18 @@
 package com.yalantis.starwarsdemo.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
 import com.yalantis.starwarsdemo.R;
 import com.yalantis.starwarsdemo.interfaces.GreetingFragmentInterface;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -21,7 +22,7 @@ import butterknife.OnClick;
 public class GreetingsFragment extends Fragment {
     public final static String TAG = GreetingsFragment.class.getCanonicalName();
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
     private GreetingFragmentInterface mListener;
@@ -53,7 +54,7 @@ public class GreetingsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+//        ButterKnife.unbind(this);
     }
 
     @OnClick(R.id.btn_setup_profile)

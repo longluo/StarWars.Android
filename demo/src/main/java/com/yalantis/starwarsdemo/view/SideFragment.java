@@ -6,15 +6,8 @@ import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.StyleRes;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.view.ContextThemeWrapper;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SwitchCompat;
-import android.support.v7.widget.Toolbar;
+
+
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +16,16 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
+import androidx.annotation.StyleRes;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.yalantis.starwars.TilesFrameLayout;
 import com.yalantis.starwars.interfaces.TilesFrameLayoutListener;
 import com.yalantis.starwarsdemo.R;
@@ -33,7 +36,7 @@ import com.yalantis.starwarsdemo.interfaces.TilesRendererInterface;
 import com.yalantis.starwarsdemo.model.User;
 import com.yalantis.starwarsdemo.widget.ClipRevealFrame;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -47,17 +50,17 @@ public abstract class SideFragment extends Fragment implements ProfileAdapterLis
     public static final String ARG_SHOULD_EXPAND = "should expand";
     private static final long ANIM_DURATION = 250L;
     protected float mRadius;
-    @Bind(R.id.recycler)
+    @BindView(R.id.recycler)
     RecyclerView mRecycler;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     ImageView mHeader;
-    @Bind(R.id.tessellation_frame_layout)
+    @BindView(R.id.tessellation_frame_layout)
     TilesFrameLayout mTilesFrameLayout;
-    @Bind(R.id.collapsing_toolbar_layout)
+    @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
-    @Bind(R.id.app_bar_layout)
+    @BindView(R.id.app_bar_layout)
     AppBarLayout mAppBarLayout;
     private View mRootView;
     private Toolbar.OnMenuItemClickListener onMenuItemClickListener = new Toolbar.OnMenuItemClickListener() {
@@ -97,7 +100,8 @@ public abstract class SideFragment extends Fragment implements ProfileAdapterLis
         }
     }
 
-    abstract @StyleRes int getTheme();
+    abstract @StyleRes
+    int getTheme();
 
     protected Animator createCheckoutRevealAnimator(final ClipRevealFrame view, int x, int y, float startRadius, float endRadius) {
         setMenuVisibility(false);
@@ -178,10 +182,6 @@ public abstract class SideFragment extends Fragment implements ProfileAdapterLis
         return mRootView;
     }
 
-
-
-
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -212,11 +212,10 @@ public abstract class SideFragment extends Fragment implements ProfileAdapterLis
     abstract User getUser();
 
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+//        ButterKnife.unbind(this);
     }
 
     @Override
@@ -230,7 +229,7 @@ public abstract class SideFragment extends Fragment implements ProfileAdapterLis
         if (this instanceof BrightSideFragment && v.isChecked()) {
             cx = rect.right - halfThumbWidth;
             postGoToSide(cy, cx, "dark");
-        } else if (!v.isChecked()){
+        } else if (!v.isChecked()) {
             cx = rect.left + halfThumbWidth;
             postGoToSide(cy, cx, "bright");
         }

@@ -1,21 +1,22 @@
 package com.yalantis.starwarsdemo.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.yalantis.starwarsdemo.R;
 import com.yalantis.starwarsdemo.interfaces.ProfileAdapterListener;
 import com.yalantis.starwarsdemo.model.User;
 import com.yalantis.starwarsdemo.widget.BackgroundDrawableSwitchCompat;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -89,12 +90,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
 //            holder.getBinding().setVariable(BR.callback, mListener);
 //            holder.getBinding().setVariable(BR.user, mUser);
                 holder.mySwitch.setCheckedImmediate(mUser.isDarkSide());
-                holder.mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
-                        mListener.onSideSwitch(holder.mySwitch);
-                    }
-                });
+//                holder.mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
+//                        mListener.onSideSwitch(holder.mySwitch);
+//                    }
+//                });
                 holder.label.setText(mUser.getSideText());
                 break;
             case 1:
@@ -124,15 +125,15 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @Nullable
-        @Bind(R.id.side_switch)
+        @BindView(R.id.side_switch)
         BackgroundDrawableSwitchCompat mySwitch;
 
         @Nullable
-        @Bind(R.id.tv_label)
+        @BindView(R.id.tv_label)
         TextView label;
 
         @Nullable
-        @Bind(R.id.tv_value)
+        @BindView(R.id.tv_value)
         TextView value;
 
         public ViewHolder(View itemView) {

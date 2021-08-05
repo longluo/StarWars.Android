@@ -1,9 +1,10 @@
 package com.yalantis.starwars.utils.gl;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,12 +12,12 @@ import java.io.InputStreamReader;
 
 /**
  * Created by Artem Kholodnyi on 11/1/15 12:17 PM
- *
  */
 public class RawResourceReader {
 
     /**
      * Reads a raw resource text file into a String
+     *
      * @param context
      * @param resId
      * @return
